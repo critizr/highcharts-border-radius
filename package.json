@@ -13,5 +13,8 @@
     "url": "https://github.com/bellstrand/highcharts-border-radius/issues"
   },
   "homepage": "https://github.com/bellstrand/highcharts-border-radius",
-  "dependencies": {}
+  "dependencies": {},
+  "browserify": {
+    "transform": ["babelify"]
+  }
 }
