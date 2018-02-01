@@ -33,6 +33,17 @@
 					radiusBottomRight = radiusBottomRight > maxR ? maxR : radiusBottomRight;
 					radiusBottomLeft = radiusBottomLeft > maxR ? maxR : radiusBottomLeft;
 
+					if(point.series.groupedData) {
+						if(point.stackY != 100) {
+							radiusTopLeft = 0;
+							radiusTopRight = 0;
+						}
+						if(Math.round(point.total * (point.stackY / 100)) != point.y) {
+							radiusBottomLeft = 0;
+							radiusBottomRight = 0;
+						}
+					}
+
 					point.dlBox = point.shapeArgs;
 
 					point.shapeType = 'path';
