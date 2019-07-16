@@ -8,25 +8,25 @@
 }(function(Highcharts) {
 	(function(H) {
 		H.wrap(H.seriesTypes.column.prototype, 'translate', function(proceed) {
-			const options = this.options;
-			const topMargin = options.topMargin || 0;
-			const bottomMargin = options.bottomMargin || 0;
+			var options = this.options;
+			var topMargin = options.topMargin || 0;
+			var bottomMargin = options.bottomMargin || 0;
 
 			proceed.call(this);
 
 			H.each(this.points, function(point) {
 				if(options.borderRadiusTopLeft || options.borderRadiusTopRight || options.borderRadiusBottomRight || options.borderRadiusBottomLeft) {
-					const w = point.shapeArgs.width;
-					const h = point.shapeArgs.height;
-					const x = point.shapeArgs.x;
-					const y = point.shapeArgs.y;
+					var w = point.shapeArgs.width;
+					var h = point.shapeArgs.height;
+					var x = point.shapeArgs.x;
+					var y = point.shapeArgs.y;
 
 					var radiusTopLeft = H.relativeLength(options.borderRadiusTopLeft || 0, w);
 					var radiusTopRight = H.relativeLength(options.borderRadiusTopRight || 0, w);
 					var radiusBottomRight = H.relativeLength(options.borderRadiusBottomRight || 0, w);
 					var radiusBottomLeft = H.relativeLength(options.borderRadiusBottomLeft || 0, w);
 
-					const maxR = Math.min(w, h) / 2
+					var maxR = Math.min(w, h) / 2
 
 					radiusTopLeft = radiusTopLeft > maxR ? maxR : radiusTopLeft;
 					radiusTopRight = radiusTopRight > maxR ? maxR : radiusTopRight;
