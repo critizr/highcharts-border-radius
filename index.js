@@ -44,12 +44,12 @@
 						}
 					}
 
-					if (point.stackY !== 100) {
+					if (point.series.stackKey && point.stackY !== 100) {
 						radiusTopLeft = 0;
 						radiusTopRight = 0;
 					}
 			
-					if (point.stackY && (point.stackY.toFixed(4) !== point.percentage.toFixed(4))) {
+					if ((point.series.stackKey) && point.stackY && point.percentage && (point.stackY.toFixed(4) !== point.percentage.toFixed(4))) {
 						radiusBottomLeft = 0;
 						radiusBottomRight = 0;
 					}
