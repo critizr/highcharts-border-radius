@@ -44,6 +44,16 @@
 						}
 					}
 
+					if (point.stackY !== 100) {
+						radiusTopLeft = 0;
+						radiusTopRight = 0;
+					}
+			
+					if (point.stackY && (point.stackY.toFixed(4) !== point.percentage.toFixed(4))) {
+						radiusBottomLeft = 0;
+						radiusBottomRight = 0;
+					}
+
 					point.dlBox = point.shapeArgs;
 
 					point.shapeType = 'path';
