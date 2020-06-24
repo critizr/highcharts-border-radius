@@ -33,26 +33,38 @@
 					radiusBottomRight = radiusBottomRight > maxR ? maxR : radiusBottomRight;
 					radiusBottomLeft = radiusBottomLeft > maxR ? maxR : radiusBottomLeft;
 
-					if(point.series.groupedData) {
-						if(point.stackY != 100) {
-							radiusTopLeft = 0;
-							radiusTopRight = 0;
-						}
-						if(Math.round(point.total * (point.stackY / 100)) != point.y) {
-							radiusBottomLeft = 0;
-							radiusBottomRight = 0;
-						}
-					}
+					
+          if (options.stacking === "percent") {
+            if(point.series.groupedData) {
+              if(point.stackY != 100) {
+                radiusTopLeft = 0;
+                radiusTopRight = 0;
+              }
+              if(Math.round(point.total * (point.stackY / 100)) != point.y) {
+                radiusBottomLeft = 0;
+                radiusBottomRight = 0;
+              }
+            }
 
-					if (point.series.stackKey && point.stackY !== 100) {
-						radiusTopLeft = 0;
-						radiusTopRight = 0;
-					}
-			
-					if ((point.series.stackKey) && point.stackY && point.percentage && (point.stackY.toFixed(4) !== point.percentage.toFixed(4))) {
-						radiusBottomLeft = 0;
-						radiusBottomRight = 0;
-					}
+            if (point.series.stackKey && point.stackY !== 100) {
+              radiusTopLeft = 0;
+              radiusTopRight = 0;
+            }
+
+            if ((point.series.stackKey) && point.stackY && point.percentage && (point.stackY.toFixed(4) !== point.percentage.toFixed(4))) {
+              radiusBottomLeft = 0;
+              radiusBottomRight = 0;
+            }
+          } else if (options.stacking === "normal") {
+            if (point.stackY !== point.stackTotal) {
+              radiusTopLeft = 0;
+              radiusTopRight = 0;
+            }
+            if (point.stackY !== 0) {
+              radiusBottomLeft = 0;
+              radiusBottomRight = 0;
+            }
+          }
 
 					point.dlBox = point.shapeArgs;
 
